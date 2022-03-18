@@ -16,6 +16,6 @@ namespace Mission12.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime Date { get; set; }
-        
+        public int TourSlot { get; set; } // numbered 1-12
     }
 }
