@@ -18,6 +18,7 @@ namespace Mission12.Models
         [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        // We probably need to build a new model for these so we can tell how that will all work and stuff
         [Required]
         public DateTime Date { get; set; }
         [Required]
