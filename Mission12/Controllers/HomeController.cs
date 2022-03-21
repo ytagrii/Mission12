@@ -23,15 +23,6 @@ namespace Mission12.Controllers
             return View();
         }
 
-        public IActionResult Timeslots()
-        {
-            return View();
-        }
-        
-        public IActionResult SignupForm()
-        {
-            return View();
-        }
         public IActionResult Privacy()
         {
             return View();
