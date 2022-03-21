@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+}
+
+@model Signup
+
+<h1>@ViewData["Title"]</h1>
+
+<form class="form" method="post" asp-controller="">
+    <label asp-for="Name">Group Name</label>
+    <input asp-for="Name" required />
+    <br />
+    <label asp-for="Size">Group Size</label>
+    <select asp-for="Size">
+        <option value=0>Group Size</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+        <option value=11>11</option>
+        <option value=12>12</option>
+        <option value=13>13</option>
+        <option value=14>14</option>
+        <option value=15>15</option>
+    </select>
+    <br />
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" required />
+    <br />
+    <label asp-for="PhoneNumber">Phone Number</label>
+    <input asp-for="PhoneNumber" required>
+    <br />
+    <button type="submit">Submit Movie</button>
+</form>
