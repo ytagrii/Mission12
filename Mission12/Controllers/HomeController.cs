@@ -11,11 +11,10 @@ namespace Mission12.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ISignupRepository repo;
+        public HomeController(ISignupRepository temp)
         {
-            _logger = logger;
+            repo = temp;
         }
 
         public IActionResult Index()
