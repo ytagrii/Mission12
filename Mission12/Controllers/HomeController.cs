@@ -22,24 +22,11 @@ namespace Mission12.Controllers
             return View();
         }
 
-        public IActionResult Timeslots()
-        {
-            return View();
-        }
-        
-        public IActionResult SignupForm()
-        {
-            return View();
-        }
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 }
