@@ -10,18 +10,13 @@ namespace Mission12.Models
     {
         [Key]
         [Required]
-        public int SignupID { get; set; }
+        public int SignupId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string GroupName { get; set; }
         [Required]
         public int Size { get; set; }
         [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        // We probably need to build a new model for these so we can tell how that will all work and stuff
-        [Required]
-        public DateTime Date { get; set; }
-        [Required]
-        public int TourSlot { get; set; } // numbered 1-12
     }
 }

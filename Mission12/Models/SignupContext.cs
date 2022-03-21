@@ -18,5 +18,18 @@ namespace Mission12.Models
         }
 
         public DbSet<Signup> Signups { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            mb.Entity<Appointment>().HasData(
+                new Appointment
+                {
+                    BookingId = 1,
+                    Date = DateTime.Now,
+                    TourSlot = 1
+                }
+            ); ;
+        }
     }
 }

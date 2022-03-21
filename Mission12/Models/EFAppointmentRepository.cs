@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace Mission12.Models
 {
-    public class EFSignupRepository : ISignupRepository
+    public class EFAppointmentRepository : IAppointmentRepository 
     {
         private SignupContext context { get; set; }
 
-        public EFSignupRepository(SignupContext temp)
+        public EFAppointmentRepository(SignupContext temp)
         {
             context = temp;
         }
-        public IQueryable<Signup> Signups => context.Signups;
+        public IQueryable<Appointment> Appointments => context.Appointments;
     }
 }

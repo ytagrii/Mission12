@@ -11,10 +11,12 @@ namespace Mission12.Controllers
 {
     public class HomeController : Controller
     {
-        private ISignupRepository repo;
-        public HomeController(ISignupRepository temp)
+        private ISignupRepository repoSign;
+        private IAppointmentRepository repoApp;
+        public HomeController(ISignupRepository temp, IAppointmentRepository temp2)
         {
-            repo = temp;
+            repoSign = temp;
+            repoApp = temp2;
         }
 
         public IActionResult Index()
@@ -22,11 +24,13 @@ namespace Mission12.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Timeslots()
         {
-            return View();
+            var x = repoApp.Appointments.Where(x => x.SignupId == null).ToList();
+            return View(x);
         }
-        
+        [HttpGet]
         public IActionResult SignupForm()
         {
             return View();
