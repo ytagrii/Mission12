@@ -4,12 +4,13 @@
 
 @model Signup
 
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title"] for Tour at @ViewBag.Appointment</h1>
 
-<form class="form" method="post" asp-controller="">
+<form class="form" method="post" asp-controller="Home">
     <label asp-for="GroupName">Group Name</label>
     <input asp-for="GroupName" required />
     <br />
+
     <label asp-for="Size">Group Size</label>
     <select asp-for="Size">
         <option value=0>Group Size</option>
@@ -30,11 +31,15 @@
         <option value=15>15</option>
     </select>
     <br />
+
     <label asp-for="Email">Email</label>
     <input asp-for="Email" required />
     <br />
+
     <label asp-for="PhoneNumber">Phone Number</label>
     <input asp-for="PhoneNumber" required>
     <br />
-    <button type="submit">Submit Movie</button>
+    <label></label>
+    <br />
+    <button type="submit">Book Appointment</button>
 </form>

@@ -31,10 +31,17 @@ namespace Mission12.Controllers
             return View(x);
         }
         [HttpGet]
-        public IActionResult SignupForm()
+        public IActionResult SignupForm(int id)
         {
+            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
+            ViewBag.Appointment = y.Date;
             return View();
         }
+        //[HttpPost]
+        //public IActionResult SignupForm()
+        //{
+        //    return View("Index");
+        //}
         public IActionResult Privacy()
         {
             return View();

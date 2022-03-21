@@ -9,8 +9,8 @@ using Mission12.Models;
 namespace Mission12.Migrations
 {
     [DbContext(typeof(SignupContext))]
-    [Migration("20220321195509_oneday")]
-    partial class oneday
+    [Migration("20220321222909_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,8 +34,6 @@ namespace Mission12.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("BookingId");
-
-                    b.HasIndex("SignupId");
 
                     b.ToTable("Appointments");
 
@@ -126,6 +124,9 @@ namespace Mission12.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("BookingId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -142,14 +143,18 @@ namespace Mission12.Migrations
 
                     b.HasKey("SignupId");
 
+                    b.HasIndex("BookingId");
+
                     b.ToTable("Signups");
                 });
 
-            modelBuilder.Entity("Mission12.Models.Appointment", b =>
+            modelBuilder.Entity("Mission12.Models.Signup", b =>
                 {
-                    b.HasOne("Mission12.Models.Signup", "Signup")
+                    b.HasOne("Mission12.Models.Appointment", "appointment")
                         .WithMany()
-                        .HasForeignKey("SignupId");
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
