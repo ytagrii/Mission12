@@ -9,8 +9,8 @@ using Mission12.Models;
 namespace Mission12.Migrations
 {
     [DbContext(typeof(SignupContext))]
-    [Migration("20220321195509_oneday")]
-    partial class oneday
+    [Migration("20220321220406_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,18 +24,16 @@ namespace Mission12.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("Booked")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("SignupId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TourSlot")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("BookingId");
-
-                    b.HasIndex("SignupId");
 
                     b.ToTable("Appointments");
 
@@ -43,78 +41,91 @@ namespace Mission12.Migrations
                         new
                         {
                             BookingId = 1,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 0
                         },
                         new
                         {
                             BookingId = 2,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 1
                         },
                         new
                         {
                             BookingId = 3,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 2
                         },
                         new
                         {
                             BookingId = 4,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 3
                         },
                         new
                         {
                             BookingId = 5,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 4
                         },
                         new
                         {
                             BookingId = 6,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 5
                         },
                         new
                         {
                             BookingId = 7,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 6
                         },
                         new
                         {
                             BookingId = 8,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 7
                         },
                         new
                         {
                             BookingId = 9,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 8
                         },
                         new
                         {
                             BookingId = 10,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 9
                         },
                         new
                         {
                             BookingId = 11,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 18, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 10
                         },
                         new
                         {
                             BookingId = 12,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 19, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 11
                         },
                         new
                         {
                             BookingId = 13,
+                            Booked = false,
                             Date = new DateTime(2022, 3, 23, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 12
                         });
@@ -124,6 +135,9 @@ namespace Mission12.Migrations
                 {
                     b.Property<int>("SignupId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppointmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
@@ -142,14 +156,18 @@ namespace Mission12.Migrations
 
                     b.HasKey("SignupId");
 
+                    b.HasIndex("AppointmentId");
+
                     b.ToTable("Signups");
                 });
 
-            modelBuilder.Entity("Mission12.Models.Appointment", b =>
+            modelBuilder.Entity("Mission12.Models.Signup", b =>
                 {
-                    b.HasOne("Mission12.Models.Signup", "Signup")
+                    b.HasOne("Mission12.Models.Appointment", "Appointment")
                         .WithMany()
-                        .HasForeignKey("SignupId");
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

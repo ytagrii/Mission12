@@ -10,11 +10,12 @@ namespace Mission12.Models
     {
         [Key]
         public int BookingId { get; set; }
-        public int? SignupId { get; set; }
-        public virtual Signup Signup { get; set; }
+        
         [Required]
         public DateTime Date { get; set; }
         [Required]
         public int TourSlot { get; set; } // numbered 1-12
+
+        public bool Booked { get; set; }
     }
 }

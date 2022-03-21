@@ -8,5 +8,12 @@ namespace Mission12.Models
     public interface IAppointmentRepository
     {
         IQueryable<Appointment> Appointments { get; }
+
+        public void UpdateApp(Appointment a)
+        {
+
+        }
     }
+
+    
 }

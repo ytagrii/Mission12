@@ -27,14 +27,37 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult Timeslots()
         {
-            var x = repoApp.Appointments.Where(x => x.SignupId == null).ToList();
+            var x = repoApp.Appointments.Where(x => x.Booked == false).ToList();
             return View(x);
         }
         [HttpGet]
-        public IActionResult SignupForm()
+        public IActionResult SignupForm(int id)
         {
+            var x = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
+            ViewBag.App = x;
+
             return View();
         }
+
+        [HttpPost]
+        public IActionResult SignupForm(Signup signup)
+        {
+            var appId = signup.AppointmentId;
+            var app = repoApp.Appointments.FirstOrDefault(x => x.BookingId == appId);
+            if (ModelState.IsValid)
+            {
+                
+                repoApp.UpdateApp(app);
+                repoSign.Save(signup);
+                return Redirect("/");
+            }
+
+            ViewBag.App = app;
+            return View();
+
+
+        }
+
         public IActionResult Privacy()
         {
             return View();

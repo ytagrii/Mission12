@@ -14,5 +14,11 @@ namespace Mission12.Models
             context = temp;
         }
         public IQueryable<Signup> Signups => context.Signups;
+
+        public void Save(Signup s)
+        {
+            context.Add(s);
+            context.SaveChanges();
+        }
     }
 }

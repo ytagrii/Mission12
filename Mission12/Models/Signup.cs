@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,5 +19,11 @@ namespace Mission12.Models
         [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public int AppointmentId { get; set; }
+        [ForeignKey("AppointmentId")]
+        public Appointment Appointment { get; set; }
+
     }
 }

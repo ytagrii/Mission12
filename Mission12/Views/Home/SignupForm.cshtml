@@ -7,8 +7,9 @@
 <h1>@ViewData["Title"]</h1>
 
 <form class="form" method="post" asp-controller="">
+    <div asp-validation-summary="All"></div>
     <label asp-for="GroupName">Group Name</label>
-    <input asp-for="GroupName" required />
+    <input asp-for="GroupName"  />
     <br />
     <label asp-for="Size">Group Size</label>
     <select asp-for="Size">
@@ -31,10 +32,13 @@
     </select>
     <br />
     <label asp-for="Email">Email</label>
-    <input asp-for="Email" required />
+    <input asp-for="Email"  />
     <br />
     <label asp-for="PhoneNumber">Phone Number</label>
-    <input asp-for="PhoneNumber" required>
+    <input asp-for="PhoneNumber" >
+    <br />
+    <br />
+    <input asp-for="AppointmentId" value="@ViewBag.App.BookingId" />
     <br />
     <button type="submit">Submit Movie</button>
 </form>
