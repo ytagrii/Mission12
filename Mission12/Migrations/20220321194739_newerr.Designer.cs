@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission12.Models;
 
 namespace Mission12.Migrations
 {
     [DbContext(typeof(SignupContext))]
-    partial class SignupContextModelSnapshot : ModelSnapshot
+    [Migration("20220321194739_newerr")]
+    partial class newerr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,79 +44,37 @@ namespace Mission12.Migrations
                         {
                             BookingId = 1,
                             Date = new DateTime(2022, 3, 23, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 0
+                            TourSlot = 1
                         },
                         new
                         {
                             BookingId = 2,
                             Date = new DateTime(2022, 3, 23, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 1
+                            TourSlot = 2
                         },
                         new
                         {
                             BookingId = 3,
                             Date = new DateTime(2022, 3, 23, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 2
+                            TourSlot = 3
                         },
                         new
                         {
                             BookingId = 4,
                             Date = new DateTime(2022, 3, 23, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 3
+                            TourSlot = 4
                         },
                         new
                         {
                             BookingId = 5,
                             Date = new DateTime(2022, 3, 23, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 4
+                            TourSlot = 5
                         },
                         new
                         {
                             BookingId = 6,
                             Date = new DateTime(2022, 3, 23, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 5
-                        },
-                        new
-                        {
-                            BookingId = 7,
-                            Date = new DateTime(2022, 3, 23, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSlot = 6
-                        },
-                        new
-                        {
-                            BookingId = 8,
-                            Date = new DateTime(2022, 3, 23, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 7
-                        },
-                        new
-                        {
-                            BookingId = 9,
-                            Date = new DateTime(2022, 3, 23, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 8
-                        },
-                        new
-                        {
-                            BookingId = 10,
-                            Date = new DateTime(2022, 3, 23, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 9
-                        },
-                        new
-                        {
-                            BookingId = 11,
-                            Date = new DateTime(2022, 3, 23, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 10
-                        },
-                        new
-                        {
-                            BookingId = 12,
-                            Date = new DateTime(2022, 3, 23, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 11
-                        },
-                        new
-                        {
-                            BookingId = 13,
-                            Date = new DateTime(2022, 3, 23, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourSlot = 12
                         });
                 });
 
