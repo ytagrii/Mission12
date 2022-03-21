@@ -15,10 +15,7 @@ namespace Mission12.Models
         public int Size { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-<<<<<<< HEAD:Mission12/Models/SignupModel.cs
-=======
         [Required]
->>>>>>> parent of af6fd15 (More stuff):Mission12/Models/Signup.cs
         public DateTime Date { get; set; }
         public int TourSlot { get; set; } // numbered 1-12
     }
