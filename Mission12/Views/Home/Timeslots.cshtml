@@ -6,32 +6,3 @@
 <h1>View Available Timeslots Below</h1>
 
 <!--Make a tables with all the available timeslots below-->
-
-<table class="table table-bordered table-bordered">
-    <thead>
-        <tr>
-            <td>Date</td>
-            <td>Time</td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Appointment a in Model)
-        {
-        <tr>
-            <td>@a.Date.ToLongDateString()</td>
-            @if (a.TourSlot == 1)
-            {
-                <td>8:00am</td>
-            }
-            <td>
-                <form asp-controller="Home" asp-action="SignupForm">
-                    <input type="hidden" value="@a.BookingId" />
-                    <button type="submit" class="btn btn-primary btn-sm">Reserve Now</button>
-                </form>
-            </td>
-            
-        </tr>
-        }
-    </tbody>
-</table>
