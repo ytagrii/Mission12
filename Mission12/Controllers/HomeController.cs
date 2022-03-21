@@ -34,7 +34,9 @@ namespace Mission12.Controllers
         public IActionResult SignupForm(int id)
         {
             var x = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
+            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
             ViewBag.App = x;
+            ViewBag.Datey = y.Date;
 
             return View();
         }
@@ -54,8 +56,12 @@ namespace Mission12.Controllers
 
             ViewBag.App = app;
             return View();
+        }
 
-
+        [HttpGet]
+        public IActionResult AllAppointments()
+        {
+            return View();
         }
 
         public IActionResult Privacy()

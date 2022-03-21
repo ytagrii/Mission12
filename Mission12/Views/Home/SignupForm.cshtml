@@ -5,6 +5,7 @@
 @model Signup
 
 <h1>@ViewData["Title"]</h1>
+<h3>Appointment Time: @ViewBag.Datey</h3>
 
 <form class="form" method="post" asp-controller="">
     <div asp-validation-summary="All"></div>
@@ -38,7 +39,7 @@
     <input asp-for="PhoneNumber" >
     <br />
     <br />
-    <input asp-for="AppointmentId" value="@ViewBag.App.BookingId" />
+    <input asp-for="AppointmentId" value="@ViewBag.App.BookingId" type="hidden" />
     <br />
-    <button type="submit">Submit Movie</button>
+    <button type="submit">Book Appointment</button>
 </form>
