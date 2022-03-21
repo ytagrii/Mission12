@@ -22,7 +22,7 @@
                 <td>@a.Date.ToString("hh:mm tt")</td>
                 <td>
                     <form asp-controller="Home" asp-action="SignupForm" method="post">
-                        <input name="bookingId" type="hidden" value="@a.BookingId" />
+                        <input asp-for="@a.BookingId" name="bookingId" type="hidden" value="@a.BookingId" />
                         <button type="submit" class="btn btn-primary btn-sm">Reserve Now</button>
                     </form>
                 </td>
