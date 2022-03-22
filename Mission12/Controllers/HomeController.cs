@@ -34,11 +34,6 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult SignupForm(string id)
         {
-            //repoApp.NewApp(d);
-
-            //var x = repoApp.Appointments.FirstOrDefault(x => x.Date == d);
-
-            //d = DateTime.Now;
             var ids = id.Replace("%2F", "/");
             DateTime y = DateTime.Parse(ids);
             ViewBag.Datey = y;
@@ -49,26 +44,15 @@ namespace Mission12.Controllers
         [HttpPost]
         public IActionResult SignupForm(Signup signup)
         {
-            var appId = signup.AppointmentId;
-            var app = repoApp.Appointments.FirstOrDefault(x => x.BookingId == appId);
+            
             if (ModelState.IsValid)
             {
-                if(signup.SignupId == 0)
-                {
-                    
                     repoSign.Save(signup);
-                    return Redirect("/");
-                }
-                else
-                {
-                    repoSign.Edit(signup);
-                    return RedirectToAction("AllAppointments");
-                }
-                
+                    return RedirectToAction("Index");
             }
 
-            ViewBag.App = app;
-            ViewBag.Datey = app.Date;
+           
+            ViewBag.Datey = signup.Appointment.Date;
             return View();
         }
 

@@ -17,7 +17,6 @@ namespace Mission12.Models
 
         public void UpdateApp(Appointment a, bool x)
         {
-            a.Booked = x;
             context.Update(a);
             context.SaveChanges();
         }
@@ -25,8 +24,6 @@ namespace Mission12.Models
         {
             Appointment app = new Appointment();
             app.Date = d;
-            app.Booked = true;
-            app.TourSlot = 1;
             context.Add(app);
             context.SaveChanges();
         }

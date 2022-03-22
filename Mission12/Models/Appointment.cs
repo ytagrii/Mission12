@@ -13,9 +13,6 @@ namespace Mission12.Models
         
         [Required]
         public DateTime Date { get; set; }
-        [Required]
-        public int TourSlot { get; set; } // numbered 1-12
-
-        public bool Booked { get; set; }
+        
     }
 }
