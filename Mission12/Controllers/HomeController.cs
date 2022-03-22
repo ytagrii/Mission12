@@ -62,6 +62,7 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult AllAppointments()
         {
+            
             IQueryable<Signup> signups = repoSign.Signups;
             return View(signups);
         }
