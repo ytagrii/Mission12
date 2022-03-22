@@ -39,7 +39,16 @@
 </thead>
 @{ DateTime currentDay = DateTime.Today;
     DateTime endDay = currentDay.AddMonths(3); }
-    <table>
+
+<select id="days" name="days">
+    @do
+    {
+        <option value="@currentDay">@currentDay</option>
+currentDay = currentDay.AddDays(1);
+    } while (currentDay <= endDay);
+</select>
+
+    @*<table>
         @do
         {
         <tr>
@@ -49,4 +58,4 @@
         } while (currentDay <= endDay);
 
         
-    </table>
+    </table>*@
