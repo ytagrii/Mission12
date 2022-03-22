@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mission12.Models
 {
@@ -30,6 +31,11 @@ namespace Mission12.Models
         {
             context.Remove(s);
             context.SaveChanges();
+        }
+        public List<Signup> GetAll()
+        {
+            var signups = context.Signups.Include(x => x.Appointment.Date).ToList();
+            return signups;
         }
     }
 }
