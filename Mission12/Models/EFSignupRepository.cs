@@ -34,7 +34,7 @@ namespace Mission12.Models
         }
         public List<Signup> GetAll()
         {
-            var signups = context.Signups.Include(x => x.Appointment.Date).ToList();
+            var signups = context.Signups.Include(x => x.Appointment).ToList();
             return signups;
         }
     }

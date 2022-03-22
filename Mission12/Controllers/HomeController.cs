@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission12.Models;
 
@@ -62,9 +63,8 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult AllAppointments()
         {
-            
-            IQueryable<Signup> signups = repoSign.Signups;
-            return View(signups);
+            var extraData = repoSign.GetAll();
+            return View(extraData);
         }
 
         public IActionResult Privacy()

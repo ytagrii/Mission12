@@ -21,6 +21,10 @@ namespace Mission12.Models
         {
 
         }
-        
+        public List<Signup> GetAll()
+        {
+            var x = new List<Signup>();
+            return x;
+        }
     }
 }
