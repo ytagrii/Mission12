@@ -1,0 +1,20 @@
+﻿@page
+@{
+}
+<!--Make a tables with all the available timeslots below-->
+
+<form action="/action_page.php">
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="bookingDate" name="birthday">
+    <input type="submit">
+</form>
+
+<!--We need to set a max date 3 months out-->
+
+<script>var d = new Date();
+    d.setMonth(d.getMonth() + 3);
+    d = d.toISOString().slice(0, 10);
+    var minD = new Date();
+    minD = minD.toISOString().slice(0, 10);
+    document.getElementById("bookingDate").min = minD;
+    document.getElementById("bookingDate").max = d;</script>

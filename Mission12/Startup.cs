@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Mission12.Models;
 
 namespace Mission12
 {
@@ -24,6 +26,14 @@ namespace Mission12
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<SignupContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:TempleDBConnection"]);
+            });
+
+            services.AddScoped<ISignupRepository, EFSignupRepository>();
+            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

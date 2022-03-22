@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "View Time Slots";
+}
+@model List<Appointment>
+
+<h1 class="text-center">View Available Timeslots Below</h1>
+
+<!--Make a tables with all the available timeslots below-->
+
+@{ DateTime currentDay = DateTime.Today;
+    DateTime endDay = currentDay.AddMonths(3);
+    DateTime currentTime = currentDay;
+    DateTime currentDayAdjusted = currentDay;
+}
+
+@do
+{
+    <button class="accordion">@currentDay.ToLongDateString()</button>
+    <div class="panel">
+
+
+        @{currentDayAdjusted = currentDay.AddHours(8);
+            currentTime = currentDayAdjusted;
+        }
+        <table class="table table-striped table-bordered">
+            @do
+            {
+                @if (Model.Count() > 0)
+                {
+                    bool condi = false;
+
+                    @foreach (Appointment a in Model)
+                    {
+                        @if (a.Date == currentTime)
+                        {
+                            condi = true;
+                            break;
+                        }
+                    }
+                    if (condi == false)
+                    {
+                        <tr>
+                            <td>@currentTime.ToString("h:mm tt")</td>
+                            <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime.ToString()">Book Tour</a></td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>@currentTime.ToString("h:mm tt")</td>
+                        <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime.ToString()">Book Tour</a></td>
+                    </tr>
+                }
+                currentTime = currentTime.AddHours(1);
+            } while (currentTime <= currentDayAdjusted.AddHours(12));
+        </table>
+        @{currentDay = currentDay.AddDays(1);}
+    </div>
+} while (currentDay <= endDay);
+
+<!--Javascript for the accordion-->
+<script>var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }</script>
