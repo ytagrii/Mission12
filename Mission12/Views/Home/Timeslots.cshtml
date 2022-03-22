@@ -38,13 +38,22 @@
     </tr>
 </thead>
 @{ DateTime currentDay = DateTime.Today;
-    DateTime endDay = currentDay.AddMonths(3); }
+    DateTime endDay = currentDay.AddMonths(3);
+    DateTime currentTime = currentDay;
+    DateTime currentDayAdjusted = currentDay;
+    }
 
 <select id="days" name="days">
     @do
     {
-        <option value="@currentDay">@currentDay</option>
-currentDay = currentDay.AddDays(1);
+        currentDayAdjusted = currentDay.AddHours(8);
+        currentTime = currentDayAdjusted;
+        do {
+        <option value="@currentTime">@currentTime.ToString("dddd | MMMM dd yyyy | h:mm tt")</option>
+            currentTime = currentTime.AddHours(1);
+        }while (currentTime <= currentDayAdjusted.AddHours(12));
+        currentDay = currentDay.AddDays(1);
+        
     } while (currentDay <= endDay);
 </select>
 
