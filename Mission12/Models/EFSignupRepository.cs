@@ -20,5 +20,16 @@ namespace Mission12.Models
             context.Add(s);
             context.SaveChanges();
         }
+
+        public void Edit(Signup s)
+        {
+            context.Update(s);
+            context.SaveChanges();
+        }
+        public void Delete(Signup s)
+        {
+            context.Remove(s);
+            context.SaveChanges();
+        }
     }
 }

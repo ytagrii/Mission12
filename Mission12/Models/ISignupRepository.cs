@@ -13,5 +13,13 @@ namespace Mission12.Models
         {
 
         }
+        public void Edit(Signup s)
+        {
+
+        }
+        public void Delete(Signup s)
+        {
+
+        }
     }
 }
