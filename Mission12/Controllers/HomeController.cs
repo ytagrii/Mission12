@@ -49,10 +49,18 @@ namespace Mission12.Controllers
             var app = repoApp.Appointments.FirstOrDefault(x => x.BookingId == appId);
             if (ModelState.IsValid)
             {
+                if(signup.SignupId == 0)
+                {
+                    repoApp.UpdateApp(app);
+                    repoSign.Save(signup);
+                    return Redirect("/");
+                }
+                else
+                {
+                    repoSign.Edit(signup);
+                    return RedirectToAction("AllAppointments");
+                }
                 
-                repoApp.UpdateApp(app);
-                repoSign.Save(signup);
-                return Redirect("/");
             }
 
             ViewBag.App = app;
@@ -75,7 +83,23 @@ namespace Mission12.Controllers
             var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == x.BookingId);
             ViewBag.App = y;
             ViewBag.Datey = y.Date;
-            return View("SignupForm", x);
+            return View(x);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Signup signup)
+        {
+            if (ModelState.IsValid)
+            {
+                repoSign.Edit(signup);
+                return RedirectToAction("AllAppointments");
+            }
+            else
+            {
+                return View(signup);
+            }
+            
+            
         }
 
         [HttpGet]
