@@ -9,7 +9,7 @@ namespace Mission12.Models
     {
         IQueryable<Appointment> Appointments { get; }
 
-        public void UpdateApp(Appointment a)
+        public void UpdateApp(Appointment a, bool x)
         {
 
         }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Edit Booking";
 }
 
 @model Signup
@@ -44,9 +44,10 @@
         <label asp-for="PhoneNumber">Phone Number</label>
         <input class="form-control" asp-for="PhoneNumber">
     </div>
-    
-    
+
+    <input asp-for="SignupId" value="@Model.SignupId" type="hidden"/>
     <input asp-for="AppointmentId" value="@ViewBag.App.BookingId" type="hidden" />
     <button type="submit" class="btn btn-primary btn-lg">Book Appointment</button>
     <a class="btn btn-secondary btn-lg" asp-controller="Home" asp-action="Timeslots">Cancel</a>
 </form>
+

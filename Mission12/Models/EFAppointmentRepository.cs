@@ -15,9 +15,9 @@ namespace Mission12.Models
         }
         public IQueryable<Appointment> Appointments => context.Appointments;
 
-        public void UpdateApp(Appointment a)
+        public void UpdateApp(Appointment a, bool x)
         {
-            a.Booked = true;
+            a.Booked = x;
             context.Update(a);
             context.SaveChanges();
         }

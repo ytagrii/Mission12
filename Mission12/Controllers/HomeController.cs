@@ -49,10 +49,18 @@ namespace Mission12.Controllers
             var app = repoApp.Appointments.FirstOrDefault(x => x.BookingId == appId);
             if (ModelState.IsValid)
             {
+                if(signup.SignupId == 0)
+                {
+                    repoApp.UpdateApp(app, true);
+                    repoSign.Save(signup);
+                    return Redirect("/");
+                }
+                else
+                {
+                    repoSign.Edit(signup);
+                    return RedirectToAction("AllAppointments");
+                }
                 
-                repoApp.UpdateApp(app);
-                repoSign.Save(signup);
-                return Redirect("/");
             }
 
             ViewBag.App = app;
@@ -70,19 +78,38 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
+            var r = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
             
-            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == x.BookingId);
+            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == r.AppointmentId);
             ViewBag.App = y;
             ViewBag.Datey = y.Date;
-            return View("SignupForm", x);
+            return View(r);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Signup signup)
+        {
+            if (ModelState.IsValid)
+            {
+                repoSign.Edit(signup);
+                return RedirectToAction("AllAppointments");
+            }
+            else
+            {
+                return View(signup);
+            }
+            
+            
         }
 
         [HttpGet]
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            
-            return View();
+            var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
+            var y = repoApp.Appointments.FirstOrDefault(r => r.BookingId == x.AppointmentId);
+            repoApp.UpdateApp(y, false);
+            repoSign.Delete(x);
+            return RedirectToAction("AllAppointments");
         }
 
         public IActionResult Privacy()
