@@ -103,10 +103,11 @@ namespace Mission12.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            
-            return View();
+            var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
+            repoSign.Delete(x);
+            return RedirectToAction("AllAppointments");
         }
 
         public IActionResult Privacy()
