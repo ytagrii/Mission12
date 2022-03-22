@@ -32,14 +32,14 @@ namespace Mission12.Controllers
             return View(x);
         }
         [HttpGet]
-        public IActionResult SignupForm(DateTime d)
+        public IActionResult SignupForm(string d)
         {
-            repoApp.NewApp(d);
+            //repoApp.NewApp(d);
 
-            var x = repoApp.Appointments.FirstOrDefault(x => x.Date == d);
-      
-            ViewBag.App = x;
-            ViewBag.Datey = x.Date;
+            //var x = repoApp.Appointments.FirstOrDefault(x => x.Date == d);
+
+            //d = DateTime.Now;
+            ViewBag.Datey = d;
 
             return View();
         }
