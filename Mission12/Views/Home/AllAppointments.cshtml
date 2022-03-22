@@ -1,5 +1,6 @@
 ﻿@{
 }
+@model List<Signup>
 <h1>View All Booked Appointments Below</h1>
 
 <table class="table table-striped table-bordered">
@@ -16,17 +17,19 @@
         </tr>
     </thead>
     <tbody>
-  
-
-    @*
-            @foreach (Appointment a in Model)
+        @foreach (Signup s in Model)
         {
-            <tr>
-                <td>@a.Date.ToLongDateString()</td>
-                <td>@a.Date.ToString("hh:mm tt")</td>
-                <td></td>
-            </tr>
-        }*@
+        <tr>
+            <td>@s.Appointment.Date.ToLongDateString()</td>
+            <td>@s.Appointment.Date.ToString("hh:mm tt")</td>
+            <td>@s.GroupName</td>
+            <td>@s.Size</td>
+            <td>@s.Email</td>
+            <td>@s.PhoneNumber</td>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@s.AppointmentId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@s.AppointmentId">Delete</a></td> 
+        </tr>
+        }
 
     </tbody>
 </table>
