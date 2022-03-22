@@ -28,16 +28,18 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult Timeslots()
         {
-            var x = repoApp.Appointments.Where(x => x.Booked == false).ToList();
+            var x = repoApp.Appointments.ToList();
             return View(x);
         }
         [HttpGet]
-        public IActionResult SignupForm(int id)
+        public IActionResult SignupForm(DateTime d)
         {
-            var x = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
-            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == id);
+            repoApp.NewApp(d);
+
+            var x = repoApp.Appointments.FirstOrDefault(x => x.Date == d);
+      
             ViewBag.App = x;
-            ViewBag.Datey = y.Date;
+            ViewBag.Datey = x.Date;
 
             return View();
         }
@@ -51,7 +53,7 @@ namespace Mission12.Controllers
             {
                 if(signup.SignupId == 0)
                 {
-                    repoApp.UpdateApp(app, true);
+                    
                     repoSign.Save(signup);
                     return Redirect("/");
                 }
@@ -107,8 +109,8 @@ namespace Mission12.Controllers
         {
             var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
             var y = repoApp.Appointments.FirstOrDefault(r => r.BookingId == x.AppointmentId);
-            repoApp.UpdateApp(y, false);
             repoSign.Delete(x);
+            repoApp.DeleteApp(y);
             return RedirectToAction("AllAppointments");
         }
 
