@@ -53,11 +53,19 @@
         <table class="table table-striped table-bordered">
             @do
             {
+                @foreach (Appointment a in Model) { 
+                    @if (a.Date != currentTime)
+                        {
 
-            <tr>
-                <td>@currentTime.ToString("h:mm tt")</td>
-                <td><a asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime.ToString()">Book Tour</a></td>
-            </tr>
+                        }
+                     else { 
+                    <tr>
+                        <td>@currentTime.ToString("h:mm tt")</td>
+                        <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime.ToString()">Book Tour</a></td>
+                    </tr>
+                        break;
+                    }
+                }
                 currentTime = currentTime.AddHours(1);
             } while (currentTime <= currentDayAdjusted.AddHours(12));
         </table>
