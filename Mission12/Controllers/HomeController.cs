@@ -55,6 +55,7 @@ namespace Mission12.Controllers
             }
 
             ViewBag.App = app;
+            ViewBag.Datey = app.Date;
             return View();
         }
 
