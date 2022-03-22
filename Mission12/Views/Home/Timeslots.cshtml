@@ -78,14 +78,17 @@
         @{currentDayAdjusted = currentDay.AddHours(8);
             currentTime = currentDayAdjusted;
         }
-
-        @do
-        {
-            @*<p>@currentTime.ToString("dddd | MMMM dd yyyy | h:mm tt")</p>*@
-            <p>@currentTime.ToString("h:mm tt")</p>
-            <a asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime">@currentTime.ToString("h:mm tt")</a>
-            currentTime = currentTime.AddHours(1);
-        } while (currentTime <= currentDayAdjusted.AddHours(12));
+        <table>
+            @do
+            {
+                @*<p>@currentTime.ToString("dddd | MMMM dd yyyy | h:mm tt")</p>*@
+            <tr>
+                <td>@currentTime.ToString("h:mm tt")</td>
+                <td><a asp-controller="Home" asp-action="SignupForm" asp-route-id="@currentTime">@currentTime.ToString("h:mm tt")</a></td>
+            </tr>
+                currentTime = currentTime.AddHours(1);
+            } while (currentTime <= currentDayAdjusted.AddHours(12));
+        </table>
         @{currentDay = currentDay.AddDays(1);}
     </div>
 } while (currentDay <= endDay);
