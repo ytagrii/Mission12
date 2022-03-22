@@ -15,7 +15,7 @@ namespace Mission12.Models
         [Required(ErrorMessage ="Please Enter a Group Name")]
         public string GroupName { get; set; }
         [Required(ErrorMessage ="Pleae Enter a Group Size between 1 and 15")]
-        [Range(1, 15)]
+        [Range(1, 15, ErrorMessage = "Pleae Enter a Group Size between 1 and 15")]
         public int Size { get; set; }
         [Required(ErrorMessage ="Please Enter a Valid Email")]
         public string Email { get; set; }
