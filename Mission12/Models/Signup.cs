@@ -12,11 +12,12 @@ namespace Mission12.Models
         [Key]
         [Required]
         public int SignupId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Please Enter a Group Name")]
         public string GroupName { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Pleae Enter a Group Size between 1 and 15")]
+        [Range(1, 15)]
         public int Size { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Please Enter a Valid Email")]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
