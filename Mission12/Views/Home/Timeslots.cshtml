@@ -10,12 +10,12 @@
     <thead>
         <tr>
             <td class="font-weight-bold">Date</td>
-            <td class="font-weight-bold">Time Slot</td="font-weight-bold">
+            <td class="font-weight-bold">Time Slot</td>
             <td></td>
         </tr>
     </thead>
     <tbody>
-        @foreach(Appointment a in Model)
+        @foreach (Appointment a in Model)
         {
             <tr>
                 <td>@a.Date.ToLongDateString()</td>
@@ -23,12 +23,30 @@
                 <td>
                     <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="SignupForm" asp-route-id="@a.BookingId">Reserve Now</a>
                     @*<form asp-controller="Home" asp-action="SignupForm" method="post">
-                        <input asp-for="@a.BookingId" name="bookingId" type="hidden" value="@a.BookingId" />
-                        <button type="submit" class="btn btn-primary btn-sm">Reserve Now</button>
-                    </form>*@
+                            <input asp-for="@a.BookingId" name="bookingId" type="hidden" value="@a.BookingId" />
+                            <button type="submit" class="btn btn-primary btn-sm">Reserve Now</button>
+                        </form>*@
                 </td>
             </tr>
         }
 
     </tbody>
 </table>
+<thead>
+    <tr>
+        <td class="font-weight-bold">Date</td>
+    </tr>
+</thead>
+@{ DateTime currentDay = DateTime.Today;
+    DateTime endDay = currentDay.AddMonths(3); }
+    <table>
+        @do
+        {
+        <tr>
+            <td>@currentDay</td>
+        </tr>
+        @currentDay = currentDay.AddDays(1);
+        } while (currentDay <= endDay);
+
+        
+    </table>
