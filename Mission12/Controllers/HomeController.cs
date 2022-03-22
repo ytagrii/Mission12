@@ -71,8 +71,9 @@ namespace Mission12.Controllers
         public IActionResult Edit(int id)
         {
             var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
-            ViewBag.App = x;
+            
             var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == x.BookingId);
+            ViewBag.App = y;
             ViewBag.Datey = y.Date;
             return View("SignupForm", x);
         }
