@@ -1,4 +1,6 @@
 ﻿@{
+    ViewData["Title"] = "All Appointments";
+}
 }
 @model List<Signup>
 <h1>View All Booked Appointments Below</h1>
@@ -19,16 +21,16 @@
     <tbody>
         @foreach (Signup s in Model)
         {
-        <tr>
-            <td>@s.Appointment.Date.ToLongDateString()</td>
-            <td>@s.Appointment.Date.ToString("hh:mm tt")</td>
-            <td>@s.GroupName</td>
-            <td>@s.Size</td>
-            <td>@s.Email</td>
-            <td>@s.PhoneNumber</td>
-            <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@s.AppointmentId">Edit</a></td>
-            <td><a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@s.AppointmentId">Delete</a></td> 
-        </tr>
+            <tr>
+                <td>@s.Appointment.Date.ToLongDateString()</td>
+                <td>@s.Appointment.Date.ToString("hh:mm tt")</td>
+                <td>@s.GroupName</td>
+                <td>@s.Size</td>
+                <td>@s.Email</td>
+                <td>@s.PhoneNumber</td>
+                <td><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@s.AppointmentId">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@s.AppointmentId">Delete</a></td>
+            </tr>
         }
 
     </tbody>
