@@ -13,6 +13,10 @@ namespace Mission12.Models
         {
 
         }
+        public void NewApp(DateTime d)
+        {
+
+        }
     }
 
     

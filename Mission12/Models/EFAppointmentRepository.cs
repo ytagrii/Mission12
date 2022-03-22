@@ -21,5 +21,19 @@ namespace Mission12.Models
             context.Update(a);
             context.SaveChanges();
         }
+        public void NewApp(DateTime d)
+        {
+            Appointment app = new Appointment();
+            app.Date = d;
+            app.Booked = true;
+            app.TourSlot = 1;
+            context.Add(app);
+            context.SaveChanges();
+        }
+        public void DeleteApp(Appointment a)
+        {
+            context.Remove(a);
+            context.SaveChanges();
+        }
     }
 }
