@@ -32,8 +32,21 @@
 
     </tbody>
 </table>
+<thead>
+    <tr>
+        <td class="font-weight-bold">Date</td>
+    </tr>
+</thead>
+@{ DateTime currentDay = DateTime.Today;
+    DateTime endDay = currentDay.AddMonths(3); }
+    <table>
+        @do
+        {
+        <tr>
+            <td>@currentDay</td>
+        </tr>
+        @currentDay = currentDay.AddDays(1);
+        } while (currentDay <= endDay);
 
-@{ DateTime thisDay = DateTime.Today;}
-@thisDay
-@thisDay.AddMonths(3);
-@thisDay.AddDays(25);
+        
+    </table>
