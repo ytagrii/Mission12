@@ -43,9 +43,9 @@
         @do
         {
         <tr>
-            <td>@currentDay</td>
+            <td>@currentDay.ToLongDateString()</td>
         </tr>
-        @currentDay = currentDay.AddDays(1);
+        currentDay = currentDay.AddDays(1);
         } while (currentDay <= endDay);
 
         
