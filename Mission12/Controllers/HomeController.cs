@@ -51,7 +51,7 @@ namespace Mission12.Controllers
             {
                 if(signup.SignupId == 0)
                 {
-                    repoApp.UpdateApp(app);
+                    repoApp.UpdateApp(app, true);
                     repoSign.Save(signup);
                     return Redirect("/");
                 }
@@ -78,12 +78,12 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
+            var r = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
             
-            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == x.BookingId);
+            var y = repoApp.Appointments.FirstOrDefault(x => x.BookingId == r.AppointmentId);
             ViewBag.App = y;
             ViewBag.Datey = y.Date;
-            return View(x);
+            return View(r);
         }
 
         [HttpPost]
@@ -106,6 +106,8 @@ namespace Mission12.Controllers
         public IActionResult Delete(int id)
         {
             var x = repoSign.Signups.FirstOrDefault(x => x.AppointmentId == id);
+            var y = repoApp.Appointments.FirstOrDefault(r => r.BookingId == x.AppointmentId);
+            repoApp.UpdateApp(y, false);
             repoSign.Delete(x);
             return RedirectToAction("AllAppointments");
         }
