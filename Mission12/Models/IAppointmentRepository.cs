@@ -17,6 +17,10 @@ namespace Mission12.Models
         {
 
         }
+        public void DeleteApp(Appointment a)
+        {
+
+        }
     }
 
     
