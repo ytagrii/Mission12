@@ -39,6 +39,7 @@ namespace Mission12.Controllers
             //var x = repoApp.Appointments.FirstOrDefault(x => x.Date == d);
 
             //d = DateTime.Now;
+            DateTime y = DateTime.Parse(id);
             ViewBag.Datey = id;
 
             return View();
